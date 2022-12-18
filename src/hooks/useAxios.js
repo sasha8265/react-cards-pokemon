@@ -8,18 +8,14 @@ import axios from "axios";
  * The second element is a function that will add a new object of data to our array. */
 
 const useAxios = (url) => {
-    const [responses, setResponses] = useState(null);
-    const [error, setError] = useState(null);
+    const [responses, setResponses] = useState([]);
 
     const addResData = async () => {
-        try {
-            const res = await fetch(url);
-            setResponses(responses => [...responses, { ...res.data, id: uuid() }]);
-        } catch (err) {
-            setError(err);
-        }
+        const res = await axios.get(url);
+        // const json = await res.json();
+        setResponses(data => [...data, { ...res.data, id: uuid() }]);
     };
-    return {responses, error, addResData}
+    return [responses, addResData]
 }
 
 export default useAxios;
