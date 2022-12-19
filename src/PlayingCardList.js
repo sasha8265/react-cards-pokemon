@@ -17,8 +17,8 @@ function PlayingCardList() {
                 <button onClick={() => addCard(formatCard)}>Add a playing card!</button>
             </div>
             <div className="PlayingCardList-card-area">
-                {cards.map(cardData => (
-                    <PlayingCard key={cardData.id} front={cardData.cards[0].image} />
+                {cards.map(card => (
+                    <PlayingCard key={card.id} front={card.image} />
                 ))}
             </div>
         </div>
