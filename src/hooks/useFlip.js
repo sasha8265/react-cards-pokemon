@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
 const useFlip = (initialState = true) => {
     const [state, setState] = useState(initialState);
