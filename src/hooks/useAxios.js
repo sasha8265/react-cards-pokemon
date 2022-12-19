@@ -7,12 +7,12 @@ import axios from "axios";
  * The first element is an array of data obtained from previous AJAX requests (since we will add to this array, it’s a piece of state). 
  * The second element is a function that will add a new object of data to our array. */
 
-const useAxios = (url) => {
+const useAxios = (baseUrl, restOfUrl="") => {
     const [responses, setResponses] = useState([]);
 
     const addResData = async () => {
-        const res = await axios.get(url);
-        // const json = await res.json();
+        const res = await axios.get(`${baseUrl}${restOfUrl}`);
+        console.log(res)
         setResponses(data => [...data, { ...res.data, id: uuid() }]);
     };
     return [responses, addResData]
